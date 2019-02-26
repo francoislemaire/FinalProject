@@ -30,6 +30,17 @@ public class TacticsMove : MonoBehaviour
 
     public Tile actualTargetTile;
 
+    protected enum PlayerStates
+    {
+        ActionSelection,
+        MovementSelection,
+        Combat,
+        Moving
+    }
+
+    [SerializeField]
+    protected PlayerStates playerState = PlayerStates.MovementSelection;
+
     protected void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -108,6 +119,7 @@ public class TacticsMove : MonoBehaviour
         path.Clear();
         tile.target = true;
         moving = true;
+        playerState = PlayerStates.Moving;
 
         Tile next = tile;
         while (next != null)
@@ -156,6 +168,7 @@ public class TacticsMove : MonoBehaviour
         {
             RemoveSelectableTiles();
             moving = false;
+            playerState = PlayerStates.MovementSelection;
 
             TurnManager.EndTurn();
         }

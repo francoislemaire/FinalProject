@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMove : TacticsMove 
 {
 
+
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -21,12 +23,13 @@ public class PlayerMove : TacticsMove
             return;
         }
 
-        if (!moving)
+        if (playerState == PlayerStates.MovementSelection)
         {
             FindSelectableTiles();
             CheckMouse();
         }
-        else
+        
+        if(playerState == PlayerStates.Moving)
         {
             Move();
         }
