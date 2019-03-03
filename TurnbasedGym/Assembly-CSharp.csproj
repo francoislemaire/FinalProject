@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\AnimationGraph.cs" />
     <Compile Include="Assets\scripts\AttackType.cs" />
     <Compile Include="Assets\scripts\BaseEnemy.cs" />
     <Compile Include="Assets\scripts\BaseHero.cs" />
