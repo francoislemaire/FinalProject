@@ -70,6 +70,7 @@
     <Compile Include="Assets\scripts\HeroStateMachine.cs" />
     <Compile Include="Assets\scripts\MenuScript.cs" />
     <Compile Include="Assets\scripts\NPCMove.cs" />
+    <Compile Include="Assets\scripts\PlayerMenu.cs" />
     <Compile Include="Assets\scripts\PlayerMove.cs" />
     <Compile Include="Assets\scripts\TacticsCamera.cs" />
     <Compile Include="Assets\scripts\TacticsMove.cs" />

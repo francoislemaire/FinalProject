@@ -33,6 +33,11 @@ public class PlayerMove : TacticsMove
         {
             Move();
         }
+
+        if(playerState == PlayerStates.ActionSelection)
+        {
+
+        }
 	}
 
     void CheckMouse()

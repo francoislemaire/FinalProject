@@ -29,6 +29,10 @@ public class TacticsMove : MonoBehaviour
     Vector3 jumpTarget;
 
     public Tile actualTargetTile;
+    public GameObject playerMenu;
+
+    public Character character;
+
 
     protected enum PlayerStates
     {
@@ -48,6 +52,8 @@ public class TacticsMove : MonoBehaviour
         halfHeight = GetComponent<Collider>().bounds.extents.y;
 
         TurnManager.AddUnit(this);
+        playerMenu = GameObject.Find("PlayerMenu");
+        character = GetComponent<Character>();
     }
 
     public void GetCurrentTile()
@@ -168,11 +174,27 @@ public class TacticsMove : MonoBehaviour
         {
             RemoveSelectableTiles();
             moving = false;
-            playerState = PlayerStates.MovementSelection;
+            //playerState = PlayerStates.MovementSelection;
+            //TurnManager.EndTurn();
 
-            TurnManager.EndTurn();
+            character.Move();
+            BeginActionSelection();
         }
     }
+
+    public void BeginMoveSelection()
+    {
+        playerState = PlayerStates.MovementSelection;
+    }
+
+    protected void BeginActionSelection()
+    {
+        playerState = PlayerStates.ActionSelection;
+        playerMenu.SetActive(true);
+        playerMenu.GetComponent<PlayerMenu>().SetPlayer(this, this.character);
+    }
+
+    
 
     protected void RemoveSelectableTiles()
     {
@@ -401,10 +423,13 @@ public class TacticsMove : MonoBehaviour
     public void BeginTurn()
     {
         turn = true;
+        character.StartTurn();
+        BeginActionSelection();
     }
 
     public void EndTurn()
     {
         turn = false;
+        TurnManager.EndTurn();
     }
 }

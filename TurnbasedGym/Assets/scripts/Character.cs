@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
 
 
 
-
+    public bool hasMoved;
 
 
     // Start is called before the first frame update
@@ -38,5 +38,15 @@ public class Character : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void StartTurn()
+    {
+        hasMoved = false;
+    }
+
+    public void Move()
+    {
+        hasMoved = true;
     }
 }
