@@ -430,6 +430,5 @@ public class TacticsMove : MonoBehaviour
     public void EndTurn()
     {
         turn = false;
-        TurnManager.EndTurn();
     }
 }

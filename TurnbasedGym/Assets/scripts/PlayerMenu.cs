@@ -30,7 +30,8 @@ public class PlayerMenu : MonoBehaviour
         currentCharacter = character;
 
         playerMoveButton.onClick.AddListener(delegate { currentPlayer.BeginMoveSelection(); DisablePlayerMenu(); });
-        endTurnButton.onClick.AddListener(delegate { EndTurn(); DisablePlayerMenu(); });
+        // endTurnButton.onClick.AddListener(delegate { EndTurn(); DisablePlayerMenu(); });
+        endTurnButton.onClick.AddListener(delegate { EndTurn(); });
 
         DisableButtons();
     }
@@ -47,6 +48,6 @@ public class PlayerMenu : MonoBehaviour
 
     public void EndTurn()
     {
-        currentPlayer.EndTurn();
+        TurnManager.EndTurn();
     }
 }
